@@ -1,103 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gad Game Studio | Official Website</title>
-    <style>
-        :root {
-            --bg-color: #0b0c10;
-            --text-color: #c5c6c7;
-            --accent-color: #66fcf1;
-            --accent-hover: #45a29e;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAD Games Studio — Casual &amp; puzzle games for mobile and web</title>
+<meta name="description" content="GAD Games Studio is an indie studio making bright casual, puzzle and arcade games. Play Meow Nooks, Mahjong Atlas, Nudge 2048, 2048 Cube Runner and more on Google Play, Playgama and CrazyGames.">
+<link rel="canonical" href="https://gadgamestudio.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GAD Games Studio">
+<meta property="og:title" content="GAD Games Studio">
+<meta property="og:description" content="Bright casual, puzzle and arcade games on Google Play, Playgama and CrazyGames.">
+<meta property="og:url" content="https://gadgamestudio.github.io/">
+<meta property="og:image" content="https://gadgamestudio.github.io/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#14122b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14122b;
+    --bg-2: #1c1940;
+    --card: #221e4a;
+    --line: rgba(255,255,255,.08);
+    --text: #e9e6ff;
+    --muted: #a49fc9;
+    --coral: #ff7a59;
+    --gold: #ffc247;
+    --teal: #3fe0c5;
+    --gp: #01875f;
+    --pg: #7b4dff;
+    --cg: #6842ff;
+    --radius: 22px;
+    --head: "Fredoka", ui-rounded, "SF Pro Rounded", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(1180px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3, .brand { font-family: var(--head); font-weight: 700; letter-spacing: .2px; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-        }
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(20,18,43,.72);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 1.25rem; }
+  .brand img { width: 36px; height: 36px; }
+  .brand span { color: var(--gold); }
+  nav { display: flex; gap: 6px; }
+  nav a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: .95rem; padding: 8px 14px; border-radius: 999px; transition: .2s; }
+  nav a:hover { color: #fff; background: rgba(255,255,255,.07); }
 
-        .container {
-            max-width: 600px;
-            padding: 40px 20px;
-        }
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: min(78vh, 720px);
+    display: flex; align-items: center;
+    background:
+      linear-gradient(90deg, var(--bg) 0%, rgba(20,18,43,.88) 34%, rgba(20,18,43,.15) 62%, rgba(20,18,43,0) 100%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(20,18,43,0) 28%),
+      url("assets/hero.webp") right center / cover no-repeat,
+      radial-gradient(circle at 75% 45%, #3a2b7a, var(--bg) 70%);
+  }
+  .hero .wrap { padding: 80px 0 110px; }
+  .eyebrow { display: inline-block; font-weight: 700; font-size: .8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); background: rgba(63,224,197,.1); border: 1px solid rgba(63,224,197,.25); padding: 6px 12px; border-radius: 999px; }
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); line-height: 1.02; margin: 18px 0 18px; max-width: 12ch; }
+  .hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--gold), var(--coral)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { font-size: 1.15rem; color: #cfcaf0; max-width: 34rem; margin: 0 0 32px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-family: var(--head); font-size: 1.05rem; padding: 14px 26px; border-radius: 999px; transition: transform .2s, box-shadow .2s, background .2s; }
+  .btn-primary { background: linear-gradient(90deg, var(--gold), var(--coral)); color: #2a1406; box-shadow: 0 10px 30px rgba(255,122,89,.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,122,89,.5); }
+  .btn-ghost { color: #fff; border: 2px solid rgba(255,255,255,.22); }
+  .btn-ghost:hover { border-color: #fff; transform: translateY(-2px); }
 
-        h1 {
-            color: #ffffff;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            background: linear-gradient(45deg, #fff, var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+  /* Stats */
+  .stats { margin-top: -54px; position: relative; z-index: 2; }
+  .stats .wrap { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .stat { padding: 22px 26px; text-align: center; }
+  .stat + .stat { border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: var(--head); font-size: 2rem; line-height: 1.1; color: #fff; }
+  .stat span { color: var(--muted); font-size: .92rem; }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #858688;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+  /* Sections */
+  section { padding: 90px 0 0; }
+  .section-head { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+  .section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0; line-height: 1.1; }
+  .section-head p { margin: 6px 0 0; color: var(--muted); max-width: 36rem; }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
+  /* Games */
+  .games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .game {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .game:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(0,0,0,.45); border-color: rgba(255,255,255,.18); }
+  .cover { position: relative; aspect-ratio: 16 / 9; background: #2b2660; }
+  .cover img { width: 100%; height: 100%; object-fit: cover; }
+  .title { display: flex; align-items: center; gap: 14px; }
+  .title .icon { width: 56px; height: 56px; border-radius: 15px; flex: none; box-shadow: 0 6px 16px rgba(0,0,0,.35); }
+  .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+  .body h3 { margin: 0; font-size: 1.32rem; line-height: 1.2; }
+  .body h3 small { display: block; font-size: .9rem; font-weight: 500; color: var(--muted); margin-top: 2px; }
+  .body p { margin: 10px 0 18px; color: #c4bfe6; font-size: .97rem; flex: 1; }
+  .tag { margin-left: auto; align-self: flex-start; font-size: .7rem; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: var(--teal); background: rgba(63,224,197,.1); border: 1px solid rgba(63,224,197,.22); padding: 3px 9px; border-radius: 999px; }
+  .stores { display: flex; flex-wrap: wrap; gap: 8px; }
+  .store { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; font-weight: 700; font-size: .86rem; padding: 8px 13px; border-radius: 12px; color: #fff; transition: filter .2s, transform .2s; }
+  .store:hover { filter: brightness(1.15); transform: translateY(-1px); }
+  .store svg { width: 16px; height: 16px; flex: none; }
+  .store.gp { background: var(--gp); }
+  .store.pg { background: var(--pg); }
+  .store.cg { background: linear-gradient(90deg, #6842ff, #b44dff); }
 
-        .btn {
-            display: inline-block;
-            background: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            padding: 12px 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(102, 252, 241, 0.1);
-        }
+  /* Where to play */
+  .platforms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .platform {
+    text-decoration: none; padding: 26px; border-radius: var(--radius); border: 1px solid var(--line);
+    background: var(--bg-2); display: flex; gap: 18px; align-items: center; transition: .25s;
+  }
+  .platform:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.2); }
+  .platform .badge { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; flex: none; }
+  .platform .badge svg { width: 28px; height: 28px; }
+  .platform h3 { margin: 0; font-size: 1.2rem; }
+  .platform p { margin: 2px 0 0; color: var(--muted); font-size: .92rem; }
 
-        .btn:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 25px rgba(102, 252, 241, 0.4);
-            transform: translateY(-2px);
-        }
+  /* Contact */
+  .contact {
+    margin-top: 90px; border-radius: 30px; padding: 54px 40px; text-align: center;
+    background: radial-gradient(circle at 20% 0%, rgba(255,194,71,.18), transparent 50%), radial-gradient(circle at 90% 100%, rgba(63,224,197,.16), transparent 50%), var(--bg-2);
+    border: 1px solid var(--line);
+  }
+  .contact h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 10px; }
+  .contact p { color: var(--muted); margin: 0 auto 26px; max-width: 34rem; }
 
-        .footer {
-            margin-top: 60px;
-            font-size: 0.85rem;
-            color: #454545;
-        }
-    </style>
+  footer { padding: 50px 0 40px; color: #6f6a99; font-size: .88rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 26px; }
+  footer a { color: #8f8abb; text-decoration: none; }
+  footer a:hover { color: #fff; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+  @media (max-width: 980px) {
+    .games { grid-template-columns: repeat(2, 1fr); }
+    .platforms { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav a:not(.nav-cta) { display: none; }
+    .hero { min-height: auto; background:
+      linear-gradient(0deg, var(--bg) 8%, rgba(20,18,43,.55) 55%, rgba(20,18,43,.35) 100%),
+      url("assets/hero.webp") 72% center / cover no-repeat,
+      radial-gradient(circle at 75% 45%, #3a2b7a, var(--bg) 70%); }
+    .hero .wrap { padding: 70px 0 100px; }
+    .games { grid-template-columns: 1fr; }
+    .stats .wrap { grid-template-columns: 1fr 1fr 1fr; }
+    .stat { padding: 16px 8px; }
+    .stat b { font-size: 1.5rem; }
+    .stat span { font-size: .78rem; }
+    .contact { padding: 40px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>GAD GAMES STUDIO</h1>
-        <div class="subtitle">Game Development</div>
-        
-        <p>We craft engaging mobile games and applications. Our website is currently under reconstruction, but you can explore and play our latest projects on the store!</p>
-        
-        <a href="https://play.google.com/store/apps/dev?id=5228843744561374076" class="btn" target="_blank">
-            Our Games on Google Play
-        </a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-gp" viewBox="0 0 24 24"><path fill="currentColor" d="M4.2 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l9.5-9.7-9.5-9.7Zm10.7 8.5 2.8-2.8L6.2 1.5c-.4-.2-.8-.3-1.1-.2l9.8 9.5Zm0 2.4-9.8 9.5c.3.1.7 0 1.1-.2L17.7 16l-2.8-2.8Zm4.2-4.4-3.1 3.2 3.1 3.2 2.8-1.6c.9-.5.9-2.6 0-3.1l-2.8-1.7Z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.5v13a1 1 0 0 0 1.5.9l10.4-6.5a1 1 0 0 0 0-1.8L9.5 4.6A1 1 0 0 0 8 5.5Z"/></symbol>
+  <symbol id="i-pad" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 6h9a5.5 5.5 0 0 1 5.4 6.6l-1 4.6a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.8 2.4a2.6 2.6 0 0 1-4.5-1.2l-1-4.6A5.5 5.5 0 0 1 7.5 6Zm-.5 3.5V11H5.5v1.5H7V14h1.5v-1.5H10V11H8.5V9.5H7Zm9.5 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-2 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5v-11Zm2.3-.4 6.7 5.3 6.7-5.3H5.3ZM19 8.2l-6.4 5a1 1 0 0 1-1.2 0L5 8.2v9.3c0 .3.2.5.5.5h13c.3 0 .5-.2.5-.5V8.2Z"/></symbol>
+</svg>
 
-        <div class="footer">
-            &copy; 2026 Gad Game Studio. All rights reserved.
-        </div>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo-mark.png" alt="" width="36" height="36">GAD <span>Games</span></a>
+    <nav>
+      <a href="#games">Games</a>
+      <a href="#play">Where to play</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <span class="eyebrow">Indie game studio</span>
+      <h1>Small games, <em>big fun.</em></h1>
+      <p>We're GAD Games Studio. We make bright casual, puzzle and arcade games for phones and browsers: cosy cat sorting, giant mahjong boards, 2048 mash-ups and more.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#games">See our games</a>
+        <a class="btn btn-ghost" href="https://play.google.com/store/apps/dev?id=5228843744561374076" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-gp"/></svg>Google Play</a>
+      </div>
     </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <div class="stat"><b>9</b><span>games released</span></div>
+      <div class="stat"><b>3</b><span>platforms</span></div>
+      <div class="stat"><b>100%</b><span>free to play</span></div>
+    </div>
+  </div>
+
+  <section id="games">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Our games</h2>
+          <p>Free to play on Android and right in your browser. Tap a button to play where you like.</p>
+        </div>
+      </div>
+
+      <div class="games">
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/meow-nooks/cover.webp" alt="Meow Nooks: Cat Sort Puzzle" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/meow-nooks/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Meow Nooks<small>Cat Sort Puzzle</small></h3><span class="tag">Puzzle</span></div>
+            <p>Sort the kittens into their cosy houses. A calm, cute sorting puzzle to unwind with.</p>
+            <div class="stores">
+              <a class="store pg" href="https://playgama.com/game/meow-nooks-cat-sort-puzzle" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/mahjong-atlas/cover.webp" alt="Mahjong Atlas: Tile Solitaire" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/mahjong-atlas/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Mahjong Atlas<small>Tile Solitaire</small></h3><span class="tag">Mahjong</span></div>
+            <p>Classic tile matching on one giant board of up to a thousand tiles that you pan and zoom like a map.</p>
+            <div class="stores">
+              <a class="store gp" href="https://play.google.com/store/apps/details?id=com.gadgames.mahjongatlas" target="_blank" rel="noopener"><svg><use href="#i-gp"/></svg>Google Play</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/nudge-2048/cover.webp" alt="Nudge 2048: Brick Ball Merge" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/nudge-2048/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Nudge 2048<small>Brick Ball Merge</small></h3><span class="tag">Arcade</span></div>
+            <p>Brick breaker meets 2048: bounce the ball to push number blocks together and merge them.</p>
+            <div class="stores">
+              <a class="store gp" href="https://play.google.com/store/apps/details?id=com.gadgames.nudge2048" target="_blank" rel="noopener"><svg><use href="#i-gp"/></svg>Google Play</a>
+              <a class="store pg" href="https://playgama.com/game/nudge-2048" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/cube-runner/cover.webp" alt="2048 Cube Runner: 3D Merge" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/cube-runner/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>2048 Cube Runner<small>3D Merge</small></h3><span class="tag">Runner</span></div>
+            <p>Grow a chain of numbered cubes, merge them 2048-style and fly through multiplier gates.</p>
+            <div class="stores">
+              <a class="store gp" href="https://play.google.com/store/apps/details?id=com.gadgames.cuberunner" target="_blank" rel="noopener"><svg><use href="#i-gp"/></svg>Google Play</a>
+              <a class="store pg" href="https://playgama.com/game/2048-cube-runner-3d-merge" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/bloxorz/cover.webp" alt="Bloxorz 3D: Roll Block Puzzle" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/bloxorz/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Bloxorz 3D<small>Roll Block Puzzle</small></h3><span class="tag">Puzzle</span></div>
+            <p>Roll a block with coloured faces across floating tiles, match the colours and drop it into the goal.</p>
+            <div class="stores">
+              <a class="store gp" href="https://play.google.com/store/apps/details?id=com.gadgames.bloxorz" target="_blank" rel="noopener"><svg><use href="#i-gp"/></svg>Google Play</a>
+              <a class="store pg" href="https://playgama.com/game/bloxorz-color-block-roll" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/bridge-bounce/cover.webp" alt="Bridge Bounce: Jump Challenge" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/bridge-bounce/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Bridge Bounce<small>Jump Challenge</small></h3><span class="tag">Arcade</span></div>
+            <p>One tap to jump. Hop the gaps on a crumbling bridge and grab every coin you can.</p>
+            <div class="stores">
+              <a class="store gp" href="https://play.google.com/store/apps/details?id=com.gadgames.bridgebounce" target="_blank" rel="noopener"><svg><use href="#i-gp"/></svg>Google Play</a>
+              <a class="store pg" href="https://playgama.com/game/bridge-bounce-jump-challenge" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/sponge-strike/cover.webp" alt="Sponge Strike: Clean &amp; Smash" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/sponge-strike/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Sponge Strike<small>Clean &amp; Smash</small></h3><span class="tag">Casual</span></div>
+            <p>Grab the sponge and scrub, smash and clean up messy boards. Oddly satisfying.</p>
+            <div class="stores">
+              <a class="store pg" href="https://playgama.com/game/sponge-strike-clean--smash" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg>Playgama</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/last-train/cover.webp" alt="Last Train: Iron Horde" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/last-train/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Last Train<small>Iron Horde</small></h3><span class="tag">Shooter</span></div>
+            <p>A first-person roguelite: defend a moving train from an endless robot horde.</p>
+            <div class="stores">
+              <a class="store cg" href="https://www.crazygames.com/game/last-train-iron-horde" target="_blank" rel="noopener"><svg><use href="#i-pad"/></svg>CrazyGames</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="game">
+          <div class="cover"><img src="assets/games/hay-hunter/cover.webp" alt="Hay Hunter" loading="lazy" width="960" height="540"></div>
+          <div class="body">
+            <div class="title"><img class="icon" src="assets/games/hay-hunter/icon.webp" alt="" width="56" height="56" loading="lazy"><h3>Hay Hunter<small>Needle in a haystack</small></h3><span class="tag">Casual</span></div>
+            <p>Dig through giant haystacks, dig up treasure and find the hidden needle.</p>
+            <div class="stores">
+              <a class="store cg" href="https://www.crazygames.com/game/hay-hunter" target="_blank" rel="noopener"><svg><use href="#i-pad"/></svg>CrazyGames</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="play">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Where to play</h2>
+          <p>Install on Android or play instantly in your browser, no download needed.</p>
+        </div>
+      </div>
+      <div class="platforms">
+        <a class="platform" href="https://play.google.com/store/apps/dev?id=5228843744561374076" target="_blank" rel="noopener">
+          <div class="badge" style="background:var(--gp)"><svg><use href="#i-gp"/></svg></div>
+          <div><h3>Google Play</h3><p>5 games for Android phones and tablets</p></div>
+        </a>
+        <a class="platform" href="https://playgama.com/developer/8193" target="_blank" rel="noopener">
+          <div class="badge" style="background:var(--pg)"><svg><use href="#i-play"/></svg></div>
+          <div><h3>Playgama</h3><p>6 games to play in your browser</p></div>
+        </a>
+        <a class="platform" href="https://www.crazygames.com/game/last-train-iron-horde" target="_blank" rel="noopener">
+          <div class="badge" style="background:linear-gradient(135deg,#6842ff,#b44dff)"><svg><use href="#i-pad"/></svg></div>
+          <div><h3>CrazyGames</h3><p>Last Train and Hay Hunter in your browser</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="contact" id="contact">
+      <h2>Say hi 👋</h2>
+      <p>Publishing, partnerships, feedback or a bug report: write to us and we'll get back to you.</p>
+      <a class="btn btn-primary" href="mailto:gadgamestudio@gmail.com"><svg width="20" height="20"><use href="#i-mail"/></svg>gadgamestudio@gmail.com</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 GAD Games Studio</div>
+    <ul>
+      <li><a href="meow-nooks/privacy/">Meow Nooks privacy</a></li>
+      <li><a href="mahjong-atlas/privacy/">Mahjong Atlas privacy</a></li>
+      <li><a href="nudge-2048/privacy/">Nudge 2048 privacy</a></li>
+      <li><a href="bridge-bounce/privacy/">Bridge Bounce privacy</a></li>
+    </ul>
+  </div>
+</footer>
 
 </body>
 </html>
